@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.provider.CalendarContract.Colors
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -64,28 +67,18 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     navController.navigate("tasklist")
                                 }
-
                                 override fun onFailure(p0: Call<LoginResponse>, p1: Throwable) {
 
                                 }
                             })
                         })
                     }
+
+                    composable("tasklist") {
+                        SecondScreen()
+                    }
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(10.dp)
-            .background(Color.Cyan)
-            .padding(10.dp),
-        text = "Hello $name!",
-        color = PinkIoasys
-    )
 }

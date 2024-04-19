@@ -18,6 +18,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,6 +64,7 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit) {
                 .fillMaxWidth()
                 .padding(end = 16.dp, start = 16.dp),
             value = password,
+            visualTransformation = PasswordVisualTransformation(),
             onValueChange = {
                 password = it
             }, label = {
