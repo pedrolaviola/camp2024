@@ -1,30 +1,13 @@
 package com.camp.camp
 
 import android.os.Bundle
-import android.provider.CalendarContract.Colors
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInVertically
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.camp.camp.ui.theme.Camp2024Theme
-import com.camp.camp.ui.theme.PinkIoasys
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -65,7 +48,11 @@ class MainActivity : ComponentActivity() {
                                     p0: Call<LoginResponse>,
                                     p1: Response<LoginResponse>
                                 ) {
-                                    navController.navigate("tasklist")
+                                    if (p1.isSuccessful) {
+                                        navController.navigate("tasklist")
+                                    } else {
+                                        Toast.makeText(this@MainActivity, "Usuario invalido", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                                 override fun onFailure(p0: Call<LoginResponse>, p1: Throwable) {
 
